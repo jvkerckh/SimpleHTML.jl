@@ -1,7 +1,7 @@
 name = "SimpleHTML"
 uuid = "66a626c8-c7d1-41be-af91-a0a35aa73acc"
 authors = ["Johan Van Kerckhoven <johan.vankerckhoven@gmail.com> and contributors"]
-version = "0.1.0"
+version = "1.0.0"
 
 [compat]
 julia = "1.6"

@@ -1,5 +1,8 @@
 module SimpleHTML
 
-# Write your package code here.
+include("consts.jl")
+include("structs.jl")
+include("tags.jl")
+include("render.jl")
 
-end
+end # module
