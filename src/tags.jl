@@ -201,8 +201,12 @@ end  # combineclasses( classes, class )
 
 # These functions ensure that the content of a HTML tag call gets formatted
 #   properly to fit inside the data structure.
+function process_content( content::AbstractArray )
+    prc = isempty(content) ? [Text("")] :
+        process_content.(content) |> vec
+    any( isa.( prc, Vector ) ) ? reduce( vcat, prc ) : prc
+end  # process_content( content::AbstractArray )
+
 process_content( content::Tuple ) = process_content(content |> collect)
-process_content( content::AbstractArray ) = isempty(content) ? [Text("")] :
-    process_content.(content)[:]
 process_content( content::HtmlTag ) = content
 process_content( content ) = Text(content |> string)
