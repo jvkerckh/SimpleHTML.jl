@@ -12,7 +12,7 @@ This macro generates a function that allows the user to create a `Tag` (HTML tag
 
 Example:
 
-```Tag"p"( "This is a HTML paragraph", id="htmlp" )```
+`Tag"p"( "This is a HTML paragraph", id="htmlp" )`
 """
 macro Tag_str( name::AbstractString )
     quote
@@ -31,7 +31,7 @@ This macro generates a function that allows the user to get the HTML string repr
 
 Example:
 
-```tag"p"( "This is a HTML paragraph", id="htmlp" )``` will generate ```"<p id="htmlp">This is a HTML paragraph</p>"```
+`tag"p"( "This is a HTML paragraph", id="htmlp" )` will generate `"<p id="htmlp">This is a HTML paragraph</p>"`
 """
 macro tag_str( name::AbstractString )
     # This has to be done in this manner instead of with a quote because of the @Tag_str macro that is called.
@@ -68,7 +68,7 @@ setTagAttribute!( attr::SSymb, val ) =
 function setTagAttribute!( tag::HtmlTag, attr::SSymb, val )
     atstr = attr |> string
     val isa Nothing && return clearTagAttribute!( tag, attr )
-    tag.attrs[atstrg] = val
+    tag.attrs[atstr] = val
     tag
 end  # setTagAttribute!( tag, attr, val )
 
@@ -150,7 +150,7 @@ setTagStyle!( attr::SSymb, val ) =
 function setTagStyle!( tag::HtmlTag, attr::SSymb, val )
     atstr = attr |> string
     val isa Nothing && return clearTagStyle!( tag, attr )
-    tag.styles[atstrg] = val
+    tag.styles[atstr] = val
     tag
 end  # setTagStyle!( tag, attr, val )
 
