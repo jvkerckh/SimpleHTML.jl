@@ -36,7 +36,7 @@ mutable struct VoidTag <: HtmlTag
     function VoidTag( name::AbstractString; id="", classes::Vector{S}=String[],
         styles::Dict{String,A1}=Dict{String,Any}(),
         attrs::Dict{String,A2}=Dict{String,Any}(),
-        kwargs... ) where {T <: HtmlTag, S <: AbstractString, A1, A2}
+        kwargs... ) where {S <: AbstractString, A1, A2}
         newtag = new()
         set_tag( newtag, name )
         set_attributes( newtag, id=id, classes=classes, styles=styles,
@@ -64,7 +64,7 @@ set_tag( newtag::HtmlTag, name::AbstractString ) =
 # This function sets all the attributes,a nd puts the id, style, and class in a
 #   separate field of the tag.
 function set_attributes( newtag::HtmlTag; id="",
-    classes::Vector{String}=String[],
+    classes::Vector{S}=String[],
     styles::Dict{String, A1}=Dict{String, Any}(),
     attrs::Dict{String, A2}=Dict{String, Any}(),
     kwargs... ) where {S <: AbstractString, A1, A2}
